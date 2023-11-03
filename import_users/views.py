@@ -15,10 +15,7 @@ class ImportUsers(View):
     def post(self, request, *args, **kwargs):
         
         uploaded_file = request.FILES['data']
-        file_content = uploaded_file.chunks()
-
-        # df = pd.read_csv(BytesIO(file_content), encoding='latin-1')
-
+        
         destination = open(f'media/{uploaded_file.name}', 'wb+')
         for chunk in uploaded_file.chunks():
             destination.write(chunk)
